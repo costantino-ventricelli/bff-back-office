@@ -1,2 +1,2 @@
 # bff-back-office
-Progetto filale stage 2025
+Bff per l'integrazione con front end per la gestione amministrativa dell'applicativo
