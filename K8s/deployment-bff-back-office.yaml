@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bff-back-office
+  namespace: gestione-spazi
+  labels:
+    app: bff-back-office
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bff-back-office
+  template:
+    metadata:
+      labels:
+        app: bff-back-office
+    spec:
+      containers:
+      - name: bff-back-office
+        image: # da definire
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        resources:
+            requests:
+                memory: "250Mi"
+                cpu: "100m"
+            limits:
+                memory: "500Mi"
+                cpu: "500m"
+        livenessProbe:
+            tcpSocket:
+                port: 8080
+            initialDelaySeconds: 60
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+        env:
+        - name: DOMAIN_APP_URL
+          value: # da definire
